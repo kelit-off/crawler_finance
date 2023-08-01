@@ -7,15 +7,6 @@ def convert_to_native_type(value):
         return int(value)
     return value
 
-def get_all_symbols():
-    try:
-        url = "https://old.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=nasdaq&render=download"
-        data = pd.read_csv(url)
-        return data['Symbol'].tolist()
-    except Exception as e:
-        print(f"Erreur inattendue : {e}")
-        return None
-
 def get_stock_info(symbol):
     try:
         data = yf.download(symbol, period="1d", interval="1m")
